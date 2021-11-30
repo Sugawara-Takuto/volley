@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+<!-- <input type="hidden" name="team" value="{{ teamname }}"> -->
+
+<!-- <p>team<input type="text" name="team"></p> -->
+<p>name<input type="text" name="name"></p>
+
+<input type="submit" value="create">
+</form>
+
+{% endblock content %}

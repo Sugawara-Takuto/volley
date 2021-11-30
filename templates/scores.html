@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+<link href="{% static 'list.css' %}" rel="stylesheet">
+{% endblock customcss %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'teamlist' %}">Teamlist</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'list' teamname.pk %}">{{ teamname }}</a></li>
+    </ol>
+  </nav>
+  <div class="title">
+    <h3>成績</h3>
+  </div>
+    <a>{{ playername.name }}</a>
+    <a href="{% url 'allscore' playername.pk %}" class="all-score">全成績</a>
+
+  <div>
+    <table border="1" border-color="black" bgcolor="white" width="100%">
+      <tr align="center">
+        <th>日付</th>
+        {% for date in dates %}
+        <td>{{ date }}</td>
+        {% endfor %}
+      </tr>
+      <tr align="center">
+        <th>決定率</th>
+        {% for score in y_attack %}
+        <td>{{ score }}</td>
+        {% endfor %}
+      </tr>
+    </table>
+  </div>
+  <div class="alert alert-success" role="alert">
+    <img src="data:image/png;base64,{{ chart_attack | safe }}" width="100%" height=auto>
+  </div>
+  <div>
+    <table border="1" width="100%">
+      <tr align="center">
+        <th>日付</th>
+        {% for date in dates %}
+        <td>{{ date }}</td>
+        {% endfor %}
+      </tr>
+      <tr align="center">
+        <th>返球率</th>
+        {% for score in y_receive %}
+        <td>{{ score }}</td>
+        {% endfor %}
+      </tr>
+    </table>
+  </div>
+  <div class="alert alert-success" role="alert">
+    <img src="data:image/png;base64,{{ chart_receive | safe }}" width="100%" height=auto>
+  </div>
+  <div>
+    <table border="1" width="100%">
+      <tr align="center">
+        <th>日付</th>
+        {% for date in dates %}
+        <td>{{ date }}</td>
+        {% endfor %}
+      </tr>
+      <tr align="center">
+        <th>サーブ効果率</th>
+        {% for score in y_effect %}
+        <td>{{ score }}</td>
+        {% endfor %}
+      </tr>
+    </table>
+  </div>
+  <div class="alert alert-success" role="alert">
+    <img src="data:image/png;base64,{{ chart_effect | safe }}" width="100%" height=auto>
+  </div>
+</div>
+{% endblock content %}

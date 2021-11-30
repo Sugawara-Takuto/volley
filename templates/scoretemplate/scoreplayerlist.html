@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+<link href="{% static 'list.css' %}" rel="stylesheet">
+{% endblock customcss %}
+
+{% block content %}
+
+<div class="container">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'scoreteamlist' %}">Team</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'scorechoice' teamname.pk %}">Choice</a></li>
+    </ol>
+  </nav>
+  <div class="title">
+    <h3>{{ teamname }}</h3>
+  </div>
+  <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+    <table width="100%" style="-ms-writing-mode:tb-lr;writing-mode:vertical-lr;">
+      <tr>
+        {% for name in players %}
+          <td style="-ms-writing-mode : lr-tb;writing-mode : horizontal-tb;">
+            <p><a> {{ name.name }}</a></p>
+          </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        {% for form in formset %}
+          <td nowrap style="-ms-writing-mode : lr-tb;writing-mode : horizontal-tb;">
+          <div class="alert alert-success" role="alert">
+          {{ form.as_p }}
+          </div>
+          </td>
+        {% endfor %}
+      </tr>
+    </table>
+    {{ formset.management_form }}
+    
+    <button type="submit" class="btn btn-primary">送信</button>
+  </form>
+    <a href="{% url 'list' teamname.pk %}">スコア確認</a>
+
+</div>
+
+{% endblock content %}

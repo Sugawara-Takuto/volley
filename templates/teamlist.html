@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+<link href="{% static 'list.css' %}" rel="stylesheet">
+{% endblock customcss %}
+
+{% block content %}
+<div class="container">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+      
+    </ol>
+  </nav>
+  <div class="title" role="title">
+    <h3>チーム</h3>
+  </div>
+  {% for item in object %}
+  <div class="alert alert-success" role="alert">
+    <p><a href="{% url 'list' item.pk %}">{{ item.team }}</a></p>
+    <p><a href="{% url 'deleteteam' item.pk %}" class="btn btn-primary" role="button" aria-disabled="true">delete</a></p>
+  </div>
+  {% endfor %} 
+  <div class="pull-right">
+    <a class="btn btn-primary" href="{% url 'createteam' %}" role="button">create</a>
+  </div>
+</div>
+{% endblock content %}

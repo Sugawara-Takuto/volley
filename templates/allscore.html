@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+<link href="{% static 'list.css' %}" rel="stylesheet">
+{% endblock customcss %}
+
+{% block content %}
+<div class="container">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'teamlist' %}">Teamlist</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'list' teamname.pk %}">{{ teamname }}</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'scores' playername.pk %}">{{ playername }}</a></li>
+  
+    </ol>
+  </nav>
+  <div class="title">
+    <h3>全成績</h3>
+  </div>
+    <table border="2">
+      <tr>
+        <th>
+          <p>日付</p>
+        </th>
+        {% for score in scores %}
+        <td>
+          {{ score.date }}
+          <p><a href="{% url 'deletescore' score.pk %}">消去</a></p>
+        </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th>
+          <p>スパイク決定率</p>
+        </th>
+        {% for attack_decision_rate in attack_decision_rate_list %}
+        <td>
+          {{ attack_decision_rate }}
+        </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th>
+          <p>レシーブ成功率</p>
+        </th>
+        {% for receive_rate in receive_rate_list %}
+        <td>
+          {{ receive_rate }}
+        </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th>
+          <p>レシーブ本数</p>
+        </th>
+        {% for num in receive_num %}
+        <td>
+          {{ num }}
+        </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th>
+          <p>スパイク本数</p>
+        </th>
+        {% for num in spike_num %}
+        <td>
+          {{ num }}
+        </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th>
+          <p>レシーブ成功数</p>
+        </th>
+        {% for score in scores %}
+        <td>
+          {{ score.receive_success }}
+        </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th>
+          <p>レシーブ本数</p>
+        </th>
+        {% for num in receive_num %}
+        <td>
+          {{ num }}
+        </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th>
+          <p>ブロック本数</p>
+        </th>
+        {% for score in scores %}
+        <td>
+          {{ score.block_success }}
+        </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th>
+          <p>サーブ効果率</p>
+        </th>
+        {% for effect_rate in effect_rate_list %}
+        <td>
+          {{ effect_rate }}
+        </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th>
+          <p>サーブ本数</p>
+        </th>
+        {% for num in receive_num %}
+        <td>
+          {{ num }}
+        </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th>
+          <p>サーブ効果数</p>
+        </th>
+        {% for score in scores %}
+        <td>
+          {{ score.effect }}
+        </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th>
+          <p>サービスエース数</p>
+        </th>
+        {% for score in scores %}
+        <td>
+          {{ score.ace }}
+        </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th>
+          <p>ノータッチエース数</p>
+        </th>
+        {% for score in scores %}
+        <td>
+          {{ score.Notouch_ace }}
+        </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th>
+          <p>相手チーム</p>
+        </th>
+        {% for score in scores %}
+        <td>
+          {{ score.opponent }}
+        </td>
+        {% endfor %}
+      </tr>
+    </table>
+</div>
+{% endblock content %}

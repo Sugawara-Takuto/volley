@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+<link href="{% static 'list.css' %}" rel="stylesheet">
+{% endblock customcss %}
+
+{% block content %}
+<div class="container">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'teamlist' %}">Team</a></li>
+    </ol>
+  </nav>
+  <div class="title">
+    <h3>{{ teamname.team }}</h3>
+  </div>
+  {% for nameitem in object_list %}
+  <div class="alert alert-success" role="alert">
+    <p><a href="{% url 'scores' nameitem.pk %}"> {{ nameitem.name }}</a></p>
+    <p><a href="{% url 'deleteplayer' nameitem.pk %}" class="btn btn-primary" role="button" aria-disabled="true">delete</a></p>
+  </div>
+  {% endfor %}
+  <a href="{% url 'createplayer' teamname.pk %}" class="btn btn-primary" role="button" aria-disabled="true">create</a>  
+</div>
+{% endblock content %}

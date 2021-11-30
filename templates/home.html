@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+<link href="{% static 'home.css' %}" rel="stylesheet">
+{% endblock customcss %}
+
+{% block content %}
+
+<main>
+  <div class="title" role="title">
+    <h3>成績管理</h3>
+  </div>
+  <div class="main-effect" role="main">
+    <a href="{% url 'teamlist' %}" class="btn btn-primary" role="button" aria-disabled="true">チーム</a>
+    <a href="{% url 'scoreteamlist' %}" class="btn btn-primary" role="button" aria-disabled="true">記録記入</a>
+  </div>
+</main>
+
+
+{% endblock content %}

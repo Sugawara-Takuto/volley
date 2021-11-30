@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="alert alert-primary" role="alert">
+  <h3>消去</h3>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+  <div class="alert alert-success" role="alert">
+    <p>{{ teamname.team }}を本当に消去しますか</p>
+</div>
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+<input type="submit" value="delete">
+</form>
+{% endblock content %}

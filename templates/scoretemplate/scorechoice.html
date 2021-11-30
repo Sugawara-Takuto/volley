@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+<link href="{% static 'list.css' %}" rel="stylesheet">
+{% endblock customcss %}
+
+{% block content %}
+<div class="container">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'scoreteamlist' %}">Team</a></li>
+    </ol>
+  </nav>
+  <div class="title">
+    <p>選手選択</p>
+  </div>
+  <div class="select">
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+      {{ form }}
+    <input type="submit" value="決定">
+    </form>
+  </div> 
+</div>
+{% endblock content %}
