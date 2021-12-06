@@ -20,6 +20,7 @@
 よって、できるだけ便利に成績の入力が行えるよう工夫いたしました。<br>
 まず一つは入力する選手の選択です。<br>
 試合に出ていない選手は入力欄に出す必要がなく邪魔になるため、必要な選手のみ表示させる事ができます。<br>
+https://github.com/Sugawara-Takuto/volley/blob/29aa64b22996a65d0f8dcecc80abe286597d82bc/volleyapp/views.py#L280-L316
 <img src="https://user-images.githubusercontent.com/86762993/144865696-be6eccb2-af06-4864-939d-d55e3cf04767.png" width="40%">
 
 # DEMO
