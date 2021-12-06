@@ -1,29 +1,15 @@
-from django.shortcuts import get_object_or_404, redirect, render,get_list_or_404
-from django.core.paginator import Paginator
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
-from django.views.generic.base import View
 from .forms import CreateScoreForm, PlayerChoiceForm
 from django.forms import modelformset_factory
 from .models import Teamname, Playername, Playerscores
-from .graph import Output_Graph,Plot_Graph_attack,Plot_Graph_receive,Plot_Graph_effect
-from django.views.generic import CreateView
-from django.urls import reverse_lazy
-from django.db.models import F
-import collections
-from django.template import RequestContext
-from django.http import HttpResponse
+from .graph import Plot_Graph_attack,Plot_Graph_receive,Plot_Graph_effect
 from django.contrib.auth.decorators import login_required
 import datetime
 import numpy as np
-from django.urls import reverse
-from urllib.parse import urlencode
-from django.core import serializers
-import json
 
-
-# Create your views here.
 def signupfunc(request):
   if request.method == "POST":
     username = request.POST['username']
