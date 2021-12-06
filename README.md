@@ -7,6 +7,7 @@
 
 # 環境
 使用言語 : Python 3.8.0, HTML, CSS
+フレームワーク : Django
 使用OS : Ubuntu 18.04
 
 # 機能
@@ -18,12 +19,38 @@
 <h2>入力のリルタイム化</h2>
 成績の入力は後からやるのではなく試合中に試合を見ながら入力した方が便利です。<br>
 よって、できるだけ便利に成績の入力が行えるよう工夫いたしました。<br>
-まず一つは入力する選手の選択です。<br>
+<br>
+1つ目は選手入力の方法です。<br>
+djangoでのfieldをPositiveIntegerFieldにすることで、入力欄の右側にボタンが表示されます。<br>
+これにより数字を書き直す手間がなくボタンをクリックするだけでカウントできます。<br>
+更に各確率を出す際、成功数と総数が必要となりますが、 入力では成功数と失敗数のみ入力させ、総数は内部で計算しています。<br>
+これにより、各プレーに必要な入力が１回ずつとなります。<br>
+<img src="https://user-images.githubusercontent.com/86762993/144865696-be6eccb2-af06-4864-939d-d55e3cf04767.png" width="40%"><br>
+<br>
+２つは入力する選手の選択です。<br>
 試合に出ていない選手は入力欄に出す必要がなく邪魔になるため、必要な選手のみ表示させる事ができます。<br>
+コードリンク<br>
 https://github.com/Sugawara-Takuto/volley/blob/29aa64b22996a65d0f8dcecc80abe286597d82bc/volleyapp/views.py#L280-L316
+<br>
+コード内では、選手選択のviewではsessionでデータベースに選手のプライマリキーのリストを渡し、成績入力のviewで受け取っています。<br>
+クエリセットを渡す方が効率的ですが、クエリセットはjsonシリアライズできないため、データベースの性質上クエリセットは渡せませんでした。<br>
 <img src="https://user-images.githubusercontent.com/86762993/144865696-be6eccb2-af06-4864-939d-d55e3cf04767.png" width="40%">
+<br><br>
 
-# DEMO
+<h2>各成績計算＆グラフ化</h2>
+入力された成績をview内で計算することにより、スパイク決定率、レシーブ返却率、サーブ効果率を算出しています。<br>
+コードリンク<br>
+https://github.com/Sugawara-Takuto/volley/blob/29aa64b22996a65d0f8dcecc80abe286597d82bc/volleyapp/views.py#L98-L172
+
+更に計算された値を元にグラフ化しています。<br>
+グラフ化するために、pythonのオープンソースライブラリである、「 matplotlib 」を使用しています。<br>
+viewのコードリンク<br>
+https://github.com/Sugawara-Takuto/volley/blob/29aa64b22996a65d0f8dcecc80abe286597d82bc/volleyapp/views.py#L141-L157
+<br>
+graph.pyリンク<br>
+https://github.com/Sugawara-Takuto/volley/blob/8b764b16ab9e0e59a56ea318827cfa02d92ce1a7/volleyapp/graph.py#L5-L63
+<br>
+# 動作
 まず、アカウント登録、ログインをします。（テストアカウントはそのままログイン）<br>
 <br>
 <img src="https://user-images.githubusercontent.com/86762993/144855500-4ba4d36f-3a54-4d9a-8493-e22f30e862a8.png" width="40%">
