@@ -29,7 +29,7 @@ djangoでのfieldをPositiveIntegerFieldにすることで、入力欄の右側�
 更に各確率を出す際、成功数と総数が必要となりますが、 入力では成功数と失敗数のみ入力させ、総数は内部で計算しています。<br>
 これにより、各プレーに必要な入力が１回ずつとなります。<br>
 <br>
-<img src="https://user-images.githubusercontent.com/86762993/144860816-d353db3b-d1f0-49fe-aa48-d4fd5cae3b94.png" width="40%"><br>
+<img src="https://user-images.githubusercontent.com/86762993/144877299-074fad6a-7d94-4839-a50c-6ddb95158154.png" width="40%"><br>
 <br>
 ２つ目は入力する選手の選択です。<br>
 試合に出ていない選手は入力欄に出す必要がなく邪魔になるため、必要な選手のみ表示させる事ができます。<br>
