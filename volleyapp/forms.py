@@ -1,14 +1,6 @@
 from django import forms
-from django.forms import widgets
-from django.forms import formset_factory
-from django.forms.models import fields_for_model
-from . import models
-from .models import Playername,Teamname,Playerscores
+from .models import Playername,Playerscores
 from django.shortcuts import get_object_or_404, redirect, render,get_list_or_404
-
-# class CustomModelChoiceField(forms.ModelChoiceField):
-#     def label_from_instance(self, obj): # label_from_instance 関数をオーバーライド
-#          return obj.name # 表示したいカラム名を return
 
 class PlayerChoiceForm(forms.ModelForm):
     name = forms.ModelMultipleChoiceField(
