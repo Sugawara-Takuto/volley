@@ -286,12 +286,7 @@ def scorechoicefunc(request,pk):
   form.fields['name'].queryset = object_list
   if request.method == 'POST' and form.is_valid():
     names = form.cleaned_data.get('name')
-    print(names)
-    # names = [str(name)  for name in names]
-    # names = serializers.serialize("json", names, fields =("name"))
-    # names = [json.dumps(name) for name in names]
     names_pk = [name.pk for name in names]
-    print(names_pk)
     request.session['names_pk'] = names_pk
     return redirect('scoreplayerlist', pk=pk)
 
@@ -303,12 +298,9 @@ def scorechoicefunc(request,pk):
 @login_required
 def createscorefunc(request, pk):
   names_pk = request.session['names_pk']
-  # names = [json.load(name) for name in names]
   names = Playername.objects.filter(pk__in=names_pk)
-  print(names)
   teamname = get_object_or_404(Teamname, pk=pk)
   players = names
-  # print([na.name for na in names])
   CreateScoreFormSet = modelformset_factory(model=Playerscores, form=CreateScoreForm, extra=len(players))
   initial = [{'name' : names,'date':datetime.date.today()} for names in players]
   formset = CreateScoreFormSet(request.POST or None, queryset=Playerscores.objects.none(), initial=initial)
@@ -322,3 +314,4 @@ def createscorefunc(request, pk):
       'players' : players
     }
     return render(request, 'scoretemplate/scoreplayerlist.html',context)
+
