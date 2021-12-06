@@ -5,11 +5,15 @@
 ユーザー名 : test<br>
 パスワード : test<br>
 <br>
+
 # 環境
 使用言語 : Python 3.8.0, HTML, CSS<br>
-フレームワーク : Django<br>
+フレームワーク : Django 3.2.9<br>
 使用OS : Ubuntu 18.04<br>
+ライブラリ : Django 3.2.9, numpy 1.21.4, matplotlib 3.5.0<br>
+
 <br>
+
 # 機能
 <li>login,logout,signup機能</li>
 <li>log認証</li>
