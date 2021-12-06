@@ -2,18 +2,21 @@
 バレーボール専用の選手成績記録アプリです。
 
 テストアカウント<br>
-ユーザー名 : test
-パスワード : test
-
+ユーザー名 : test<br>
+パスワード : test<br>
+<br>
 # 環境
-使用言語 : Python 3.8.0, HTML, CSS
-フレームワーク : Django
-使用OS : Ubuntu 18.04
-
+使用言語 : Python 3.8.0, HTML, CSS<br>
+フレームワーク : Django<br>
+使用OS : Ubuntu 18.04<br>
+<br>
 # 機能
 <li>login,logout,signup機能</li>
+<li>log認証</li>
 <li>CRUD機能</li>
 <li>成績のグラフ化</li>
+
+<br>
 
 # 工夫した点
 <h2>入力のリルタイム化</h2>
@@ -25,6 +28,7 @@ djangoでのfieldをPositiveIntegerFieldにすることで、入力欄の右側�
 これにより数字を書き直す手間がなくボタンをクリックするだけでカウントできます。<br>
 更に各確率を出す際、成功数と総数が必要となりますが、 入力では成功数と失敗数のみ入力させ、総数は内部で計算しています。<br>
 これにより、各プレーに必要な入力が１回ずつとなります。<br>
+<br>
 <img src="https://user-images.githubusercontent.com/86762993/144860816-d353db3b-d1f0-49fe-aa48-d4fd5cae3b94.png" width="40%"><br>
 <br>
 ２つ目は入力する選手の選択です。<br>
@@ -34,23 +38,27 @@ https://github.com/Sugawara-Takuto/volley/blob/29aa64b22996a65d0f8dcecc80abe2865
 <br>
 コード内では、選手選択のviewではsessionでデータベースに選手のプライマリキーのリストを渡し、成績入力のviewで受け取っています。<br>
 クエリセットを渡す方が効率的ですが、クエリセットはjsonシリアライズできないため、データベースの性質上クエリセットは渡せませんでした。<br>
-<img src="https://user-images.githubusercontent.com/86762993/144865696-be6eccb2-af06-4864-939d-d55e3cf04767.png" width="40%">
-<br><br>
-
+<br>
+<img src="https://user-images.githubusercontent.com/86762993/144865696-be6eccb2-af06-4864-939d-d55e3cf04767.png" width="20%"><br>
 <h2>各成績計算＆グラフ化</h2>
 入力された成績をview内で計算することにより、スパイク決定率、レシーブ返却率、サーブ効果率を算出しています。<br>
+<br>
 コードリンク<br>
-https://github.com/Sugawara-Takuto/volley/blob/29aa64b22996a65d0f8dcecc80abe286597d82bc/volleyapp/views.py#L98-L172
-<img src="https://user-images.githubusercontent.com/86762993/144865696-be6eccb2-af06-4864-939d-d55e3cf04767.png" width="40%">
+https://github.com/Sugawara-Takuto/volley/blob/29aa64b22996a65d0f8dcecc80abe286597d82bc/volleyapp/views.py#L98-L172<br>
+<br>
+<img src="https://user-images.githubusercontent.com/86762993/144875784-d5f8b1e9-9693-4b69-8c8a-75c282c198f3.png" width="40%"><br>
 <br>
 更に計算された値を元にグラフ化しています。<br>
 グラフ化するために、pythonのオープンソースライブラリである、「 matplotlib 」を使用しています。<br>
+<br>
 viewのコードリンク<br>
-https://github.com/Sugawara-Takuto/volley/blob/29aa64b22996a65d0f8dcecc80abe286597d82bc/volleyapp/views.py#L141-L157
+https://github.com/Sugawara-Takuto/volley/blob/29aa64b22996a65d0f8dcecc80abe286597d82bc/volleyapp/views.py#L141-L157<br>
 <br>
 graph.pyリンク<br>
-https://github.com/Sugawara-Takuto/volley/blob/8b764b16ab9e0e59a56ea318827cfa02d92ce1a7/volleyapp/graph.py#L5-L63
+https://github.com/Sugawara-Takuto/volley/blob/8b764b16ab9e0e59a56ea318827cfa02d92ce1a7/volleyapp/graph.py#L5-L63<br>
+
 <br>
+
 # 動作
 まず、アカウント登録、ログインをします。（テストアカウントはそのままログイン）<br>
 <br>
