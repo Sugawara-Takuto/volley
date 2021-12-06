@@ -20,14 +20,14 @@
 成績の入力は後からやるのではなく試合中に試合を見ながら入力した方が便利です。<br>
 よって、できるだけ便利に成績の入力が行えるよう工夫いたしました。<br>
 <br>
-1つ目は選手入力の方法です。<br>
+1つはは選手入力の方法です。<br>
 djangoでのfieldをPositiveIntegerFieldにすることで、入力欄の右側にボタンが表示されます。<br>
 これにより数字を書き直す手間がなくボタンをクリックするだけでカウントできます。<br>
 更に各確率を出す際、成功数と総数が必要となりますが、 入力では成功数と失敗数のみ入力させ、総数は内部で計算しています。<br>
 これにより、各プレーに必要な入力が１回ずつとなります。<br>
-<img src="https://user-images.githubusercontent.com/86762993/144865696-be6eccb2-af06-4864-939d-d55e3cf04767.png" width="40%"><br>
+<img src="https://user-images.githubusercontent.com/86762993/144860816-d353db3b-d1f0-49fe-aa48-d4fd5cae3b94.png" width="40%"><br>
 <br>
-２つは入力する選手の選択です。<br>
+２つ目は入力する選手の選択です。<br>
 試合に出ていない選手は入力欄に出す必要がなく邪魔になるため、必要な選手のみ表示させる事ができます。<br>
 コードリンク<br>
 https://github.com/Sugawara-Takuto/volley/blob/29aa64b22996a65d0f8dcecc80abe286597d82bc/volleyapp/views.py#L280-L316
@@ -41,7 +41,8 @@ https://github.com/Sugawara-Takuto/volley/blob/29aa64b22996a65d0f8dcecc80abe2865
 入力された成績をview内で計算することにより、スパイク決定率、レシーブ返却率、サーブ効果率を算出しています。<br>
 コードリンク<br>
 https://github.com/Sugawara-Takuto/volley/blob/29aa64b22996a65d0f8dcecc80abe286597d82bc/volleyapp/views.py#L98-L172
-
+<img src="https://user-images.githubusercontent.com/86762993/144865696-be6eccb2-af06-4864-939d-d55e3cf04767.png" width="40%">
+<br>
 更に計算された値を元にグラフ化しています。<br>
 グラフ化するために、pythonのオープンソースライブラリである、「 matplotlib 」を使用しています。<br>
 viewのコードリンク<br>
