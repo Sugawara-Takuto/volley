@@ -19,6 +19,8 @@ import datetime
 import numpy as np
 from django.urls import reverse
 from urllib.parse import urlencode
+from django.core import serializers
+import json
 
 
 # Create your views here.
@@ -285,7 +287,12 @@ def scorechoicefunc(request,pk):
   if request.method == 'POST' and form.is_valid():
     names = form.cleaned_data.get('name')
     print(names)
-    request.session['names'] = names
+    # names = [str(name)  for name in names]
+    # names = serializers.serialize("json", names, fields =("name"))
+    # names = [json.dumps(name) for name in names]
+    names_pk = [name.pk for name in names]
+    print(names_pk)
+    request.session['names_pk'] = names_pk
     return redirect('scoreplayerlist', pk=pk)
 
   else:
@@ -295,9 +302,13 @@ def scorechoicefunc(request,pk):
 # 全員分同時に書く
 @login_required
 def createscorefunc(request, pk):
-  names = request.session['names']
+  names_pk = request.session['names_pk']
+  # names = [json.load(name) for name in names]
+  names = Playername.objects.filter(pk__in=names_pk)
+  print(names)
   teamname = get_object_or_404(Teamname, pk=pk)
   players = names
+  # print([na.name for na in names])
   CreateScoreFormSet = modelformset_factory(model=Playerscores, form=CreateScoreForm, extra=len(players))
   initial = [{'name' : names,'date':datetime.date.today()} for names in players]
   formset = CreateScoreFormSet(request.POST or None, queryset=Playerscores.objects.none(), initial=initial)

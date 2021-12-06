@@ -136,4 +136,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_URL = 'login'
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+# SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
