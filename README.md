@@ -108,3 +108,6 @@ https://github.com/Sugawara-Takuto/volley/blob/8b764b16ab9e0e59a56ea318827cfa02d
 <br>
 <img src="https://user-images.githubusercontent.com/86762993/144862721-73d64c6b-c44a-4e52-a9d3-d51b9803e9e9.png" width="40%">
 <br><br>
+
+# 今後の展望
+今後はスコア記入欄で、試合内での得点移動の記録、ブレイク率、サイドアウト率などの、チームにフォーカスした多角的なデータ入力も追加していきたいです。
