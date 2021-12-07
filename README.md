@@ -36,8 +36,10 @@ djangoでのfieldをPositiveIntegerFieldにすることで、入力欄の右側�
 <img src="https://user-images.githubusercontent.com/86762993/144877299-074fad6a-7d94-4839-a50c-6ddb95158154.png" width="40%"><br>
 ２つ目は入力する選手の選択です。<br>
 試合に出ていない選手は入力欄に出す必要がなく邪魔になるため、必要な選手のみ表示させる事ができます。<br>
+<br>
 コードリンク<br>
 https://github.com/Sugawara-Takuto/volley/blob/29aa64b22996a65d0f8dcecc80abe286597d82bc/volleyapp/views.py#L280-L316
+<br>
 <br>
 コード内では、選手選択のviewではsessionでデータベースに選手のプライマリキーのリストを渡し、成績入力のviewで受け取っています。<br>
 クエリセットを渡す方が効率的ですが、クエリセットはjsonシリアライズできないため、データベースの性質上クエリセットは渡せませんでした。<br>
