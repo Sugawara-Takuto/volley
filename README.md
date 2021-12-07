@@ -16,7 +16,7 @@
 
 # 機能
 <li>login,logout,signup機能</li>
-<li>log認証</li>
+<li>login認証</li>
 <li>CRUD機能</li>
 <li>成績のグラフ化</li>
 
